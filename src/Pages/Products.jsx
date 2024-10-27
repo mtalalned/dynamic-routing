@@ -1,7 +1,10 @@
 import React, { useState , useEffect } from 'react'
 import CircularProgress from '@mui/material/CircularProgress';
 import MultiActionAreaCard from '../components/Card';
+import { Button } from '@mui/material'; 
 import { useNavigate } from 'react-router-dom';
+import { signOut } from "firebase/auth";
+import { auth } from '../Config/firebaseconfig';
 
 const Products = () => {
   const [product, setProduct] = useState(null);
@@ -29,12 +32,22 @@ const Products = () => {
     navigate(`/product/${items.id}`)
   }
 
+  const SignOut = ()=> {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      navigate('/')
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
   return (
     <>
     {error && <div>Error in Fetching data</div>}
     {loading && <div className='w-100 d-flex justify-content-center align-items-center' style={{height:'95vh'}}><CircularProgress /></div>}
     <div className='d-flex flex-wrap flex-column justify-content-center align-items-center gap-3 pt-4'>
       <p className='fs-1 fw-bold'>ALL PRODUCTS</p>
+      <Button variant="contained" sx={{width:'150px'}} onClick={SignOut}>SIGNOUT</Button>
       <div className='d-flex flex-wrap justify-content-center align-items-center gap-4'>
       {product && product.map ((items)=>{
       return <MultiActionAreaCard key={items.id} title={items.title} description={items.description} src={items.thumbnail} price={items.price} func={() => SingleProduct(items)}/>

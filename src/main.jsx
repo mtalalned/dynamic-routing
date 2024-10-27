@@ -9,6 +9,7 @@ import Login from './Pages/Login.jsx';
 import Products from './Pages/Products.jsx';
 import Register from './Pages/Register.jsx';
 import SingleProduct from './Pages/SingleProduct.jsx';
+import ProtectedRoutes from './components/ProtectedRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <Products />,
+        element: <ProtectedRoutes component={<Products />}/>,
       },
       {
         path: 'register',
