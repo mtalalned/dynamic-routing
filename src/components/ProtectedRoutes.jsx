@@ -12,7 +12,7 @@ const ProtectedRoutes = ({ component }) => {
                 console.log(uid)
                 setLoading(false)
             } else {
-                navigate('/login')
+                navigate('/')
             }
         });
 
