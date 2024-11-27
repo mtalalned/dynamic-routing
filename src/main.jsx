@@ -10,6 +10,9 @@ import Products from './Pages/Products.jsx';
 import Register from './Pages/Register.jsx';
 import SingleProduct from './Pages/SingleProduct.jsx';
 import ProtectedRoutes from './components/ProtectedRoutes.jsx';
+import { Provider } from 'react-redux';
+import { store } from './Config/redux/store/store.js';
+import CartPage from './Pages/CartPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,12 +35,18 @@ const router = createBrowserRouter([
         path: 'product/:id',
         element: <SingleProduct />,
       },
+      {
+        path: 'cart',
+        element: <CartPage />,
+      },
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
   <RouterProvider router={router}>
     <App />
-  </RouterProvider>,
+  </RouterProvider>
+  </Provider>,
 )

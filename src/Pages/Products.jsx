@@ -5,6 +5,8 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from '../Config/firebaseconfig';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../Config/redux/reducers/CartSlice';
 
 const Products = () => {
   const [product, setProduct] = useState(null);
@@ -15,7 +17,6 @@ const Products = () => {
     fetch('https://dummyjson.com/products')
     .then(res => res.json())
       .then(res => {
-        console.log(res.products)
         setProduct(res.products)
       })
       .catch(err => {
@@ -41,6 +42,17 @@ const Products = () => {
     });
   }
 
+  const dispatch = useDispatch()
+
+  const selector = useSelector(state => state.cart.cart)
+  console.log (selector)
+
+  const addCart = (items)=> {
+    // console.log (items)
+    dispatch(addToCart(items))
+
+  }
+
   return (
     <>
     {error && <div>Error in Fetching data</div>}
@@ -48,9 +60,9 @@ const Products = () => {
     <div className='d-flex flex-wrap flex-column justify-content-center align-items-center gap-3 pt-4'>
       <p className='fs-1 fw-bold'>ALL PRODUCTS</p>
       <Button variant="contained" sx={{width:'150px'}} onClick={SignOut}>SIGNOUT</Button>
-      <div className='d-flex flex-wrap justify-content-center align-items-center gap-4'>
+      <div className='d-flex flex-wrap justify-content-center align-items-center gap-4 py-5'>
       {product && product.map ((items)=>{
-      return <MultiActionAreaCard key={items.id} title={items.title} description={items.description} src={items.thumbnail} price={items.price} func={() => SingleProduct(items)}/>
+      return <MultiActionAreaCard key={items.id} title={items.title} description={items.description} src={items.thumbnail} price={items.price} func={() => SingleProduct(items)} func2={addCart} item={items}/>
       })}
       </div>
       

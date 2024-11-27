@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 
-export default function MultiActionAreaCard({title , description , src , price , func}) {
+export default function MultiActionAreaCard({title , description , src , price , func , func2 , item}) {
   return (
     <Card sx={{ maxWidth: 300}}>
       <CardActionArea>
@@ -24,10 +24,15 @@ export default function MultiActionAreaCard({title , description , src , price ,
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {description.slice(0 , 75)}....
           </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            Rs. {price}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
       <Button variant="contained" onClick={func}>Show More</Button>
+      <Button variant="contained" sx={{width:'150px'}} onClick={()=>func2(item)}>Add to Cart</Button>
+
       </CardActions>
     </Card>
   );
