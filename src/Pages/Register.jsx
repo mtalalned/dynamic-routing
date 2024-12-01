@@ -37,7 +37,7 @@ const Register = () => {
   
   return (
     <>
-      <Box className='d-flex flex-column justify-content-center align-items-center py-5 gap-5'>
+      <Box className='d-flex flex-column justify-content-center align-items-center py-5 gap-5 mt-5'>
       <Typography variant='h3'>Register Page</Typography>
       <TextField id="outlined-basic-1" label="Email" variant="outlined" className='w-50' value={email} onChange={(e)=>setEmail(e.target.value)}/>
       <TextField id="outlined-basic-2" label="Password" variant="outlined" type='password' className='w-50' value={password} onChange={(e)=>setPassword(e.target.value)}/>

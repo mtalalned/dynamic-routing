@@ -35,7 +35,7 @@ const Login = () => {
   }
   
   return (
-    <Box className='d-flex flex-column justify-content-center align-items-center py-5 gap-5'>
+    <Box className='d-flex flex-column justify-content-center align-items-center py-5 gap-5 mt-5'>
       <Typography variant='h3'>Login Page</Typography>
       <TextField id="outlined-basic" label="Email" variant="outlined" className='w-50' value={email} onChange={(e)=>setEmail(e.target.value)}/>
       <TextField id="outlined-basic" label="Password" variant="outlined" className='w-50' type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>

@@ -54,7 +54,7 @@ const Products = () => {
   }
 
   return (
-    <>
+    <div className='mt-5'>
     {error && <div>Error in Fetching data</div>}
     {loading && <div className='w-100 d-flex justify-content-center align-items-center' style={{height:'95vh'}}><CircularProgress /></div>}
     <div className='d-flex flex-wrap flex-column justify-content-center align-items-center gap-3 pt-4'>
@@ -67,7 +67,7 @@ const Products = () => {
       </div>
       
     </div>
-    </>
+    </div>
   )
 }
 

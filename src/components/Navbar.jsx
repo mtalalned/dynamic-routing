@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
+import {Badge} from '@mui/material';
 
 const pages = ['login', 'register', 'products'];
 
@@ -32,27 +33,24 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex' }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={()=>handleCloseNavMenu(page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
           <Box sx={{ flexGrow: 0  , cursor: 'pointer'}} onClick={GoToCartPage}>
-            <ShoppingCartIcon />
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Typography className='ms-2' >
-              {selector.length}
-            </Typography>
+            <Badge badgeContent={selector.length} color='error'>
+                  <ShoppingCartIcon />
+            </Badge>
           </Box>
         </Toolbar>
       </Container>
