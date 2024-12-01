@@ -9,7 +9,7 @@ import CardActions from '@mui/material/CardActions';
 
 export default function MultiActionAreaCard({title , description , src , price , func , func2 , item}) {
   return (
-    <Card sx={{ maxWidth: 300}}>
+    <Card sx={{ maxWidth: 300}} className='shadow'>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -30,8 +30,8 @@ export default function MultiActionAreaCard({title , description , src , price ,
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <Button variant="contained" onClick={func}>Show More</Button>
-      <Button variant="contained" sx={{width:'150px'}} onClick={()=>func2(item)}>Add to Cart</Button>
+      <Button variant="contained" onClick={func} className='bg-secondary'>Show More</Button>
+      <Button variant="contained" sx={{width:'150px', backgroundColor:'#ffa31a'}} onClick={()=>func2(item)}>Add to Cart</Button>
 
       </CardActions>
     </Card>

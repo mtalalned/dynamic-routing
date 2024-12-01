@@ -26,7 +26,7 @@ export default function MultiActionSingleAreaCard({title , description , src , p
   }
 
   return (
-    <Card sx={{ maxWidth: 300}}>
+    <Card sx={{ maxWidth: 300}} className='shadow border rounded-3'>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -34,27 +34,27 @@ export default function MultiActionSingleAreaCard({title , description , src , p
           image={src}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent className='d-flex flex-column gap-2'>
           <Typography gutterBottom variant="h5" component="div">
-            {title}
+            {title.slice(0 , 20)}....
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {description}
+          <Typography variant="body2" sx={{ color: 'text.secondary' , marginTop: '-15px' }}>
+          {description.slice(0 , 75)}....
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" className='fs-5' sx={{ color: 'text.secondary' }}>
             Rs. {price}
           </Typography>
           <Box className='d-flex justify-content-start align-items-center gap-2'>
-              <Button variant="contained" sx={{width:'30px' , height: '30px' , minWidth: '0' }} onClick={()=>addQuantity(wholeitem)}>+</Button>
+              <Button variant="contained" className='bg-primary.bg-gradient' sx={{width:'30px' , height: '30px' , minWidth: '0' }} onClick={()=>addQuantity(wholeitem)}>+</Button>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {wholeitem.quantity}
               </Typography>
-              <Button variant="contained" sx={{width:'30px' , height: '30px' , minWidth: '0'}} onClick={()=>lessQuantity(wholeitem)}>-</Button>
+              <Button variant="contained" className='bg-primary.bg-gradient' sx={{width:'30px' , height: '30px' , minWidth: '0'}} onClick={()=>lessQuantity(wholeitem)}>-</Button>
           </Box>
-          <Box className='fs-5'>
-            Price of this Item: {(wholeitem.quantity * price).toFixed(2)}
+          <Box className='bg-success text-white p-2 rounded-1 d-flex justify-content-center align-items-center'>
+            Price of this Item: Rs. {(wholeitem.quantity * price).toFixed(2)}
           </Box>
-          <Button variant="contained"  onClick={()=>deleteItem(wholeitem)}>Remove From Cart</Button>
+          <Button variant="contained" color='error' onClick={()=>deleteItem(wholeitem)}>Remove From Cart</Button>
         </CardContent>
       </CardActionArea>
     </Card>
